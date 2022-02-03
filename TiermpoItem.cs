@@ -16,11 +16,11 @@ public class TiempoItem
     public string Region { get; set; }
     public string Fecha { get; set; }
     public string Temperatura { get; set; }
-    public string TempMin { get; set; }
-    public string TempMax { get; set; }
-    public string TempMedia { get; set; }
+    // public string TempMin { get; set; }
+    // public string TempMax { get; set; }
+    // public string TempMedia { get; set; }
     public string VelocidadViento { get; set; }
-    public string PrecipitacionAcumulada { get; set; }
+    public string Precipitacion { get; set; }
     public string Descripcion { get; set; }
     public string PathImg { get; set; }
     public string Latitud { get; set; }

@@ -163,15 +163,15 @@ class Program
                             //Algunas consultas con LINQ
                             Root jsonObjectHistorialDeTiempo = JsonConvert.DeserializeObject<Root>(sRespRegistrosDeTiempo1);
 
-                            // Temperaturas maximas y minimas del dia
-                            var registrosOrdenados = from reg in jsonObjectHistorialDeTiempo.trends.set orderby reg.temperature.value ascending select reg;
-                            var tempMin = registrosOrdenados.First().temperature.value;
-                            var tempMax = registrosOrdenados.Last().temperature.value;
+                            // // Temperaturas maximas y minimas del dia
+                            // var registrosOrdenados = from reg in jsonObjectHistorialDeTiempo.trends.set orderby reg.temperature.value ascending select reg;
+                            // var tempMin = registrosOrdenados.First().temperature.value;
+                            // var tempMax = registrosOrdenados.Last().temperature.value;
 
-                            //Temperatura media del dia
+                            // //Temperatura media del dia
 
-                            var listaTemperaturas = from reg in jsonObjectHistorialDeTiempo.trends.set select reg.temperature.value;
-                            var tempMedia = listaTemperaturas.Average();
+                            // var listaTemperaturas = from reg in jsonObjectHistorialDeTiempo.trends.set select reg.temperature.value;
+                            // var tempMedia = listaTemperaturas.Average();
 
                           
                             //PARA METER LOS DATOS DESDE 0 , SOLO METERA DATOS QUE TENGAN EN COMUN EUSKALMET Y OPENWEATHER
@@ -183,11 +183,11 @@ class Program
                                 Region = $"{item.regionZoneId}",
                                 Fecha = $"{diaHoy}/{mesHoy}/{AñoHoy} : {sHora}",
                                 Temperatura = $"{(temp.value).ToString()}",
-                                TempMin = $"{tempMin}",
-                                TempMax = $"{tempMax}",
-                                TempMedia = $"{tempMedia}",
+                                // TempMin = $"{tempMin}",
+                                // TempMax = $"{tempMax}",
+                                // TempMedia = $"{tempMedia}",
                                 VelocidadViento = $"{(vvi.value).ToString()}",
-                                PrecipitacionAcumulada = $"{(prec.value).ToString()}",
+                                Precipitacion = $"{(prec.value).ToString()}",
                                 Descripcion = $"{(desc).ToString()}",
                                 PathImg = $"{(pathImg).ToString()}",
                                 Humedad = $"{hum}",
@@ -206,10 +206,10 @@ class Program
                             row.Fecha = itemNuevo.Fecha;
                             row.VelocidadViento = itemNuevo.VelocidadViento;
                             row.Temperatura = itemNuevo.Temperatura;
-                            row.TempMax = itemNuevo.TempMax;
-                            row.TempMin = itemNuevo.TempMin;
-                            row.TempMedia = itemNuevo.TempMedia;
-                            row.PrecipitacionAcumulada = itemNuevo.PrecipitacionAcumulada;
+                            // row.TempMax = itemNuevo.TempMax;
+                            // row.TempMin = itemNuevo.TempMin;
+                            // row.TempMedia = itemNuevo.TempMedia;
+                            row.Precipitacion = itemNuevo.Precipitacion;
                             row.Descripcion = itemNuevo.Descripcion;
                             row.PathImg = itemNuevo.PathImg;
                             row.Humedad = itemNuevo.Humedad;
@@ -221,11 +221,11 @@ class Program
                             Console.WriteLine($"{itemNuevo.Municipio}");
                             Console.WriteLine($"{itemNuevo.Fecha}");
                             Console.WriteLine($"{itemNuevo.Temperatura} ºC");
-                            Console.WriteLine($"{itemNuevo.TempMax} Maxima");
-                            Console.WriteLine($"{itemNuevo.TempMin} Minima");
-                            Console.WriteLine($"{itemNuevo.TempMedia}");
+                            // Console.WriteLine($"{itemNuevo.TempMax} Maxima");
+                            // Console.WriteLine($"{itemNuevo.TempMin} Minima");
+                            // Console.WriteLine($"{itemNuevo.TempMedia}");
                             Console.WriteLine($"{itemNuevo.VelocidadViento} km/h");
-                            Console.WriteLine($"{itemNuevo.PrecipitacionAcumulada} ml");
+                            Console.WriteLine($"{itemNuevo.Precipitacion} ml");
                             Console.WriteLine($"{itemNuevo.Humedad} %");
                             Console.WriteLine($"{itemNuevo.Descripcion}");
                             Console.WriteLine($"{itemNuevo.Latitud}");
@@ -245,7 +245,7 @@ class Program
                     {
                         // System.Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("");
-                        Console.Write("Ouch!! No existe ningún registro de ese municipio en Euskalmet ? =>" + item2.regionZoneLocationId +" Region =>" + item.regionZoneId, Color.IndianRed);
+                        Console.Write("Vaya, no se ha conseguido encontrar ningún registro de ese municipio en Euskalmet ? =>" + item2.regionZoneLocationId +" Region =>" + item.regionZoneId, Color.IndianRed);
                         Console.WriteLine("");
                     }
 
